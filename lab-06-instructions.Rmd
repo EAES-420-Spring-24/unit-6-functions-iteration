@@ -2,7 +2,7 @@
 title: "Lab 06 - Writing Functions"
 output: 
   tufte::tufte_html:
-    css: ../lab.css
+    css: lab.css
     tufte_variant: "envisioned"
     highlight: pygments
 link-citations: yes
@@ -22,14 +22,17 @@ knitr::include_graphics("img/cat-coding.gif")
 
 ## Data
 
-For this lab, we will be using the data we generated as part of the class survey.
-We asked you for information on:
+For this lab, we will be using the data we generated as part of the class survey.  
 
--   number of times you have moved house/apartment
--   number of pets you have owned
--   number of international flights you've flown
--   the number of credit hours you're enrolled in
--   your best guess of the number of moons in the solar system (without Google)
+We asked you for:
+
+- a random number that you generated yourself
+- a guess about then number of salamander species in Illinois
+- the number of flights you took in 2023
+- your birth day (as a numeric day)
+- birth month (as a character string)
+- your favorite color (as a character string)
+- your academic step (as a character string)
 
 ## Packages
 
@@ -62,7 +65,10 @@ Before we start the lab, let's warm up by changing the YAML in the starter file:
 # code goes here
 ```
 
-This dataset is tidy because each row is an observation (a student in the class) and each column is a variable.
+### End of Exercise 1
+
+This dataset is tidy because each row is an observation (a student in the class) and each column is a variable.  
+
 However, it is still a "wide" dataset, which makes it a bit more cumbersome to work with.
 
 2.  Copy the code chunk below into Exercise 2 in your starter file and complete the pipeline which will turn this dataset into a "long" format. Remember to change `eval` to `T` when you are ready to run the chunk.
@@ -78,26 +84,39 @@ head(class_survey_long, 10)
 # the last line will output the first 10 rows for you to view
 ```
 
+### End of Exercise 2
+
 To demonstrate the efficiency of tidy data approach, let's first try summarizing the long dataset using `tidyverse` methods and functions you've been learning.
 
-3.  Copy the code chunk below under Exercise 3 in your starter file, and within it write a short pipeline that uses the `group_by()` and `summarize()` functions to compute the **min**, **median**, **mean**, and **max** values for each question type in `class_survey_long`. You do not need to assign the output of the pipeline to anything, just admire the detailed summary information you've just generated with a few lines of code!
+3.  Copy the code chunk below under Exercise 3 in your starter file, and within it:  
+
+* Write a short pipeline that uses the `group_by()` and `summarize()` functions to compute the **min**, **median**, **mean**, and **max** values for each question type in `class_survey_long`. 
+
+You do not need to assign the output of the pipeline to anything, just admire the detailed summary information you've just generated with a few lines of code!
 
 ```{r summarize-long-data}
 # code goes here
 ```
 
+### End of Exercise 3
+
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
 
 ## Independent activities
 
-For the rest of the Lab, you'll be working independently on writing functions.
+For the rest of the Lab, you'll be working independently on writing functions.  
+
 We will be recreating the same output as you generated in Exercise 3, but this time you'll write your own function to do this.
 
 ## So, how to write a code chunk?
 
 **First, let's define what we want our function to do.**
 
-4.  Copy the code chunk below into Exercise 4 in your starter file. Look at the four calculations you perform within `summarize` in Exercise 3. We have added code for the first function. Remove the comments (`#`) and complete the next three lines yourself. You can leave `eval = F` for this code chunk because we don't need to run it.
+4.  Copy the code chunk below into Exercise 4 in your starter file.  
+
+* Look at the four calculations you perform within `summarize` in Exercise 3. We have added code for the first function. 
+* Remove the comments (`#`) and complete the next three lines yourself. 
+* You can leave `eval = F` for this code chunk because we don't need to run it.
 
 ```{r define-function-body, eval = F}
 min(response, na.rm = T)
@@ -106,19 +125,31 @@ min(response, na.rm = T)
 # a fourth function
 ```
 
+### End of Exercise 4
+
 **Second, what inputs does the function require?**
 
-5.  State in text narrative what `input` each function requires and why this input is a vector. Then copy your code from Exercise 4 into the code chunk provided under Exercise 5 in the starter file, and change the input to a more generic placeholder: `response_vector`. Again, you can leave `eval = F` for this code chunk because we don't need to run it.
+5.  State in text narrative what `input` each function requires and why this input is a vector.  
+
+* Then copy your code from Exercise 4 into the code chunk provided under Exercise 5 in the starter file.
+* Change the input to a more generic placeholder: `response_vector`. 
+* Again, you can leave `eval = F` for this code chunk because we don't need to run it.
+
+### End of Exercise 5
 
 **Third, decide on a name for your function.**
 
-Our function is going to compute summary stats.
+Our function is going to compute summary stats.  
+
 It might be tempting to call our function `summarize`.
 
 6.  State in text narrative below Exercise 6 whether you think `summarize` would be a good name, or not, and why.
 
-After much careful deliberation we decided to call our function `compute_summary_stats`.
-Now we have all the pieces together to write our function.
+### End of Exercise 6
+
+After much careful deliberation we decided to call our function `compute_summary_stats`.  
+
+Now we have all the pieces together to write our function.  
 
 7.  Copy the code chunk below into your starter file under Exercise 7 and complete it to write the function. This time, you will want to change `eval = T` when you're ready.
 
@@ -135,21 +166,29 @@ ___ <- function(___){
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
 
-8.  Insert a code chunk under Exercise 8 in your starter file.
-    Label it `test-compute-summary-stats`.
-    Within it, test out the function on one of the variables from the original **wide** form of the dataset.
-    **Remember** you can use `$` after a dataset name to select a particular variable.
+### End of Exercise 7
 
-9.  Uh oh!
-    What is wrong with your output?
-    State in text narrative below Exercise 9 in your starter file why we don't get all the output we expected?
-    **Hint**: We covered this in the last couple of lecture slides on Functions.
+8.  Insert a code chunk under Exercise 8 in your starter file:  
 
-10. Copy the code below into Exercise 10 in your starter file.
-    Complete it such that it will output a `tibble` that includes all the statistics we computed within the function.
-    Each statistic should get its own named column.
-    Then, insert and label a second code chunk that tests the revised function.
-    Confirm that your output matches the output for the same variable generated in Exercise 3.
+* Label it `test-compute-summary-stats`.
+* Within it, test out the function on one of the variables from the original **wide** form of the dataset.
+* **Remember** you can use `$` after a dataset name to select a particular variable.
+
+### End of Exercise 8
+
+9.  Uh oh! What is wrong with your output?  
+
+* State in text narrative below Exercise 9 in your starter file why we don't get all the output we expected?
+  + **Hint**: We covered this in the last couple of lecture slides on Functions.
+
+### End of Exercise 9
+
+10. Copy the code below into Exercise 10 in your starter file.  
+
+* Complete it such that it will output a `tibble` that includes all the statistics we computed within the function.
+* Each statistic should get its own named column.
+* Then, insert and label a second code chunk that tests the revised function.
+* Confirm that your output matches the output for the same variable generated in Exercise 3.
 
 ```{r fix-compute-summary-stats, eval = F}
 compute_summary_stats <- function(___){
@@ -170,6 +209,8 @@ compute_summary_stats <- function(___){
 ```
 
 You just designed, wrote and tested your own R functions!
+
+### End of Exercise 10
 
 You are finished with Lab 6!
 
