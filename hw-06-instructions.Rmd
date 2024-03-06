@@ -2,7 +2,7 @@
 title: "HW 06 - Iterating functions on Chicago cold"
 output: 
   tufte::tufte_html:
-    css: ../hw.css
+    css: hw.css
     tufte_variant: "envisioned"
     highlight: pygments
 link-citations: yes
@@ -23,13 +23,14 @@ knitr::opts_chunk$set(eval = TRUE)
 knitr::include_graphics("img/feb-2021-cold.jpeg")
 ```
 
-We will be working with data downloaded from [Weather Underground](https://www.wunderground.com/) for three stations:
+We will be working with data downloaded from [Weather Underground](https://www.wunderground.com/) for three stations:  
 
--   The Loop - `chicago-loop.csv`
--   Southloop - `chicago-south-loop.csv`
--   Oak Park - `chicago-oak-park.csv`
+- The Loop - `chicago-loop.csv`
+- Southloop - `chicago-south-loop.csv`
+- Oak Park - `chicago-oak-park.csv`
 
-Each dataset has daily min, average, and max temperatures for each day in February 2021.
+Each dataset has daily min, average, and max temperatures for each day in February 2021.  
+
 This was one of the coldest and snowiest Februarys in recent Chicago history!
 
 ## Packages
@@ -43,19 +44,25 @@ library(lubridate)
 
 ## Warm up
 
-Before we introduce the data, let's warm up with some simple exercises.
+Before we introduce the data, let's warm up with some simple exercises:  
 
--   Update the YAML, changing the author name to your name, and **knit** the document.
--   Commit your changes with a meaningful commit message.
--   Push your changes to GitHub.
+- Update the YAML, changing the author name to your name, and **knit** the document.
+- Commit your changes with a meaningful commit message.
+- Push your changes to GitHub.
 
 ## Importing the function
 
-Below is the code we used to create the `convert_temperature()` function.
-Do **not** copy it into the homework 6 starter file.
+Below is code that creates a `convert_temperature()` function.  
+
+Do **not** copy it into the homework 6 starter file.  
+
 Instead, we are going to save our function code in an R script.
 
-1.  Open a new `R Script` (under File \> New File \> R Script) and copy the code to create the function into scripting window. Exclude the top and bottom lines of the chunk (i.e. the lines that start with three back-ticks). Save the R script file as "convert_temperature.R" in the same directory as your starter file .Rmd. Finally, copy the code chunk below titled `import-convert-temperature` into Exercise 1 in your starter file. You will need to change `eval = T`.
+1.  Open a new `R Script` (under File \> New File \> R Script) and copy and paste in the code to create the function into scripting window.  
+
+* Exclude the top and bottom lines of the chunk (i.e. the lines that start with three back-ticks). 
+* Save the R script file as "convert_temperature.R" in the same directory as your starter file .Rmd. 
+* Finally, copy the code chunk below titled `import-convert-temperature` into Exercise 1 in your starter file. You will need to change `eval = T`.
 
 ```{r write-convert-temperature}
 convert_temperature <- function(temperature_vector){
@@ -71,14 +78,16 @@ convert_temperature <- function(temperature_vector){
 ```
 
 ```{r import-convert-temperature, eval = F}
-source("convert_temperatures.R")
+source("convert_temperature.R")
 ```
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
 
-It is standard practice in R to keep the underlying code for your functions separate from the main RMarkdown file you work within for a project.
-We just created an R script containing the code for `convert_temperature()` and saved it with the name `convert_temperatures.R`.
-When we run the function `source("convert_temperatures.R")`, R executes the code in that R script in our RMarkdown environment and, as a result, creates the function object `convert_temperature()`.
+It is standard practice in R to keep the underlying code for your functions separate from the main RMarkdown file you work within for a project.  
+
+We just created an R script containing the code for `convert_temperature()` and saved it with the name `convert_temperature.R`.  
+
+When we run the function `source("convert_temperature.R")`, R executes the code in that R script in our RMarkdown environment and, as a result, creates the function object `convert_temperature()`.
 
 2.  Just as as sanity-check, let's test out the function we just imported. Insert a new labeled code chunk below Exercise 2 in your starter file. Write a single line of code that will test your function with the single Fahrenheit value = `32`.
 
